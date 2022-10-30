@@ -16,13 +16,9 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Transaction {
-    @Id
-    @GeneratedValue // Account Table의 PK를 Id로 지정해주겠다는 의미
-    private Long id;
+@Builder
+public class Transaction extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
@@ -38,11 +34,4 @@ public class Transaction {
     private String transactionId;
     private LocalDateTime transactedAt;
 
-
-
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
 }

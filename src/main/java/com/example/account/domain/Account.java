@@ -15,13 +15,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Account {
-    @Id
-    @GeneratedValue // Account Table의 PK를 Id로 지정해주겠다는 의미
-    private Long id;
+@Builder
+public class Account extends BaseEntity{
 
     @ManyToOne
     private AccountUser accountUser;
@@ -34,13 +30,6 @@ public class Account {
 
     private LocalDateTime registeredAt;
     private LocalDateTime unRegisteredAt;
-
-
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
 
     public void useBalance(Long amount){
         if ( amount > balance ) {
