@@ -1,5 +1,6 @@
 package com.example.account.dto;
 
+import com.example.account.aop.AccountLockIdInterface;
 import com.example.account.type.TransactionResultType;
 import lombok.*;
 
@@ -20,7 +21,7 @@ public class UseBalance {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
-    public static class Request {
+    public static class Request implements AccountLockIdInterface {
         @NotNull
         @Min(1) // id는 1부터 시작
         private Long userId;

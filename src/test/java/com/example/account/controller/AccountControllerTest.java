@@ -7,12 +7,10 @@ import com.example.account.dto.DeleteAccount;
 import com.example.account.exception.AccountException;
 import com.example.account.type.AccountStatus;
 import com.example.account.service.AccountService;
-import com.example.account.service.RedisTestService;
+import com.example.account.service.LockService;
 import com.example.account.type.ErrorCode;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.redisson.client.protocol.decoder.ObjectMapDecoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -39,7 +37,7 @@ class AccountControllerTest {
     private AccountService accountService;
 
     @MockBean
-    private RedisTestService redisTestService;
+    private LockService redisTestService;
 
     @Autowired
     private MockMvc mockMvc;
